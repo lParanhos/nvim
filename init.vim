@@ -24,8 +24,6 @@ Plug 'sonph/onehalf', { 'rtp': 'vim' }
 Plug 'dracula/vim', { 'as': 'dracula' }
 
 " Visual
-Plug 'kyazdani42/nvim-web-devicons'
-Plug 'ryanoasis/vim-devicons'
 Plug 'TaDaa/vimade'
 Plug 'RRethy/vim-illuminate'
 Plug 'vim-airline/vim-airline'
@@ -45,11 +43,13 @@ Plug 'jiangmiao/auto-pairs'
 
 " Navigation
 Plug 'terryma/vim-expand-region'
+Plug 'christoomey/vim-tmux-navigator'
 
 " Files
 Plug 'pbrisbin/vim-mkdir'
 Plug 'junegunn/fzf', { 'do': { -> fzf#install() } }
 Plug 'junegunn/fzf.vim'
+Plug 'scrooloose/nerdtree'
 
 " Snippets
 Plug 'honza/vim-snippets'
@@ -79,6 +79,10 @@ Plug 'elzr/vim-json', { 'for': 'json' }
 
 " Dart
 Plug 'dart-lang/dart-vim-plugin'
+
+"Icons
+Plug 'kyazdani42/nvim-web-devicons'
+Plug 'ryanoasis/vim-devicons'
 
 call plug#end()
 
@@ -173,7 +177,8 @@ let g:airline#extensions#tabline#show_splits = 0
 let g:airline#extensions#tabline#show_tab_nr = 0
 let g:airline#extensions#tabline#show_tab_type = 0
 
-" CoC
+
+"CoC
 let g:coc_global_extensions = [
   \ 'coc-snippets',
   \ 'coc-actions',
@@ -245,3 +250,38 @@ nmap <leader>fr  :CocCommand flutter.run
 nmap <leader>fq  :CocCommand flutter.dev.quit<CR>
 nmap <leader>fh  :CocCommand flutter.dev.hotRestart<CR>
 nmap <leader>fl  :CocCommand flutter.dev.openDevLog<CR>
+
+" NERDTree
+noremap <C-b> :NERDTreeToggle<CR>
+
+"Moving line up down
+nnoremap <A-DOWN> :m .+1<CR>==
+nnoremap <A-UP> :m .-2<CR>==
+inoremap <A-j> <Esc>:m .+1<CR>==gi
+inoremap <A-k> <Esc>:m .-2<CR>==gi
+vnoremap <A-j> :m '>+1<CR>gv=gv
+vnoremap <A-k> :m '<-2<CR>gv=gv
+
+" turn terminal to normal mode with escape
+tnoremap <Esc> <C-\><C-n>
+
+" use alt+hjkl to move between split/vsplit panels
+tnoremap <A-h> <C-\><C-n><C-w>h
+tnoremap <A-j> <C-\><C-n><C-w>j
+tnoremap <A-k> <C-\><C-n><C-w>k
+tnoremap <A-l> <C-\><C-n><C-w>l
+nnoremap <A-h> <C-w>h
+nnoremap <A-j> <C-w>j
+nnoremap <A-k> <C-w>k
+nnoremap <A-l> <C-w>l
+
+" start terminal in insert mode
+au BufEnter * if &buftype == 'terminal' | :startinsert | endif
+
+" open terminal on ctrl+;
+" uses bash instead of zsh
+function! OpenTerminal()
+  split term://zsh
+  resize 10
+endfunction
+nnoremap <c-n> :call OpenTerminal()<CR>
