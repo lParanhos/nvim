@@ -20,8 +20,7 @@ call plug#begin('~/.vim/plugged')
 Plug 'mhinz/vim-startify'
 
 " Theme
-Plug 'sonph/onehalf', { 'rtp': 'vim' }
-Plug 'dracula/vim', { 'as': 'dracula' }
+Plug 'dracula/vim', { 'name': 'dracula' }
 
 " Visual
 Plug 'TaDaa/vimade'
@@ -50,6 +49,7 @@ Plug 'pbrisbin/vim-mkdir'
 Plug 'junegunn/fzf', { 'do': { -> fzf#install() } }
 Plug 'junegunn/fzf.vim'
 Plug 'scrooloose/nerdtree'
+
 
 " Snippets
 Plug 'honza/vim-snippets'
@@ -153,8 +153,8 @@ let g:UltiSnipsExpandTrigger="<C-tab>"
 
 " FZF
 let $FZF_DEFAULT_COMMAND='rg --files --follow --hidden'
-nnoremap <silent> <expr> <Leader><Leader> ":Files\<CR>"
-nnoremap <silent> <C-p> :Buffers<CR>
+nnoremap <C-p> :Files<CR>
+inoremap <C-p> :Files<CR>
 let g:fzf_action = {
   \ 'ctrl-t': 'tab split',
   \ 'ctrl-s': 'split',
@@ -176,7 +176,6 @@ let g:airline#extensions#tabline#show_buffers = 0
 let g:airline#extensions#tabline#show_splits = 0
 let g:airline#extensions#tabline#show_tab_nr = 0
 let g:airline#extensions#tabline#show_tab_type = 0
-
 
 "CoC
 let g:coc_global_extensions = [
