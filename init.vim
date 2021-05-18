@@ -128,6 +128,8 @@ nnoremap <silent> <leader><space> :let @/=''<cr>
 
 " Theme
 colorscheme dracula
+let g:dracula_colorterm = 0
+hi Normal guibg=NONE ctermbg=NONE
 
 " Window
 nnoremap <silent> <C-j> :resize -2<CR>
