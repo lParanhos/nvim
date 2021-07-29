@@ -48,7 +48,7 @@ Plug 'christoomey/vim-tmux-navigator'
 Plug 'pbrisbin/vim-mkdir'
 Plug 'junegunn/fzf', { 'do': { -> fzf#install() } }
 Plug 'junegunn/fzf.vim'
-Plug 'scrooloose/nerdtree'
+Plug 'preservim/nerdtree'
 
 
 " Snippets
@@ -58,6 +58,7 @@ Plug 'SirVer/ultisnips'
 " Git
 Plug 'tpope/vim-fugitive'
 Plug 'airblade/vim-gitgutter'
+Plug 'Xuyuanp/nerdtree-git-plugin'
 
 " Intellisense
 Plug 'neoclide/coc.nvim', {'branch': 'release'}
@@ -93,7 +94,7 @@ set whichwrap+=<,>,[,],h,l
 set encoding=utf-8                      " The encoding displayed
 set pumheight=10                        " Makes popup menu smaller
 set fileencoding=utf-8                  " The encoding written to file
-set ruler              			            " Show the cursor position all the time
+set ruler                                           " Show the cursor position all the time
 set cmdheight=2                         " More space for displaying messages
 set mouse=a                             " Enable your mouse
 set splitbelow                          " Horizontal splits will automatically be below
@@ -255,6 +256,12 @@ nmap <leader>fl  :CocCommand flutter.dev.openDevLog<CR>
 " NERDTree
 noremap <C-b> :NERDTreeToggle<CR>
 
+" NERDTree-git
+"let g:NERDTreeGitStatusUseNerdFonts = 1
+"let g:NERDTreeGitStatusShowIgnored = 1
+"let g:NERDTreeGitStatusConcealBrackets = 1
+"let g:NERDTreeGitStatusUntrackedFilesMode = 'all'
+
 "Moving line up down
 nnoremap <A-DOWN> :m .+1<CR>==
 nnoremap <A-UP> :m .-2<CR>==
@@ -286,3 +293,8 @@ function! OpenTerminal()
   resize 10
 endfunction
 nnoremap <c-n> :call OpenTerminal()<CR>
+
+"CRTL-S to save
+noremap <silent> <C-S>  :update<CR>
+vnoremap <silent> <C-S> <C-C>:update<CR>
+inoremap <silent> <C-S> <C-O>:update<CR>

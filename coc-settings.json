@@ -2,7 +2,7 @@
   "diagnostic.errorSign": "✘",
   "diagnostic.warningSign": "",
   "diagnostic.infoSign": "",
-  "codeLens.enable": false,
+  "codeLens.enable": true,
   "coc.preferences.enableMessageDialog": true,
   "coc.preferences.enableFloatHighlight": true,
   "javascript.preferences.importModuleSpecifier": "auto",
